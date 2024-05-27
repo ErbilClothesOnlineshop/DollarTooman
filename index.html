@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاسبه قیمت</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto 20px;
+            padding: 20px;
+            max-width: 400px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        #price1 {
+            height: 50px;
+            width: 100px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #ff1493;
+        }
+        #result {
+            font-size: 1.2em;
+        }
+        .green {
+            color: green;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .black {
+            color: black;
+            font-weight: bold;
+        }
+        #order-btn {
+            display: none;
+        }
+    </style>
+    <script>
+        var previousResult = 0;
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function calculate() {
+            var field1 = parseFloat(document.getElementById("price1").value);
+            var factor = 59000;
+
+            if (field1 <= 10) {
+                field1 = field1 * 0.7 + field1;
+            } else if (field1 <= 20) {
+                field1 += 7;
+            } else if (field1 <= 30) {
+                field1 += 9;
+            } else if (field1 <= 40) {
+                field1 += 11;
+            } else if (field1 <= 50) {
+                field1 += 13;
+            } else if (field1 <= 60) {
+                field1 += 15;
+            } else if (field1 <= 70) {
+                field1 += 17;
+            } else if (field1 <= 80) {
+                field1 += 19;
+            } else if (field1 <= 90) {
+                field1 += 21;
+            } else if (field1 <= 100) {
+                field1 += 23;
+            }
+
+            var result = field1 * factor;
+            var formattedResult = formatNumber(result);
+            document.getElementById("result").innerHTML = "<span class='black'><b>:نتیجه</b></span><br><span class='green'>" + formattedResult + "</span><br><span class='green'></span>";
+            document.getElementById("order-btn").style.display = "inline-block";
+        }
+
+        function goToOrderPage() {
+            window.location.href = "https://www.instagram.com/erbil_clothes_onlineshop?igsh=ZHJnN2NpeGpxNHN5";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>تبدیل دلار به تومان</h2>
+        <div class="input-container">
+            <input type="number" id="price1" name="price1">
+            <label for="price1"><b>:قیمت به دلار</b></label>
+        </div>
+        <button class="button" id="calculate-btn" onclick="calculate()">محاسبه</button>
+        <p id="result"></p>
+        <button class="button" id="order-btn" onclick="goToOrderPage()">ثبت سفارش</button>
+    </div>
+</body>
+</html>
