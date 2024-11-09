@@ -9,6 +9,7 @@
             background-color: pink;
             font-family: Arial, sans-serif;
             text-align: center;
+            direction: rtl;
         }
         .container {
             margin: 50px auto 20px;
@@ -20,6 +21,7 @@
         }
         .input-container {
             margin-bottom: 20px;
+            direction: ltr;
         }
         label {
             margin-left: 10px;
@@ -54,6 +56,7 @@
             color: green;
             font-size: 1.5em;
             font-weight: bold;
+            margin-left: 10px;
         }
         .black {
             color: black;
@@ -64,8 +67,6 @@
         }
     </style>
     <script>
-        var previousResult = 0;
-
         function formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
@@ -96,9 +97,10 @@
                 field1 += 23;
             }
 
-            var result = field1 * factor+200000;
+            var result = field1 * factor + 200000;
+            result = Math.round(result / 1000) * 1000; // گرد کردن سه رقم آخر به صفر
             var formattedResult = formatNumber(result);
-            document.getElementById("result").innerHTML = "<span class='black'><b>:نتیجه</b></span><br><span class='green'>" + formattedResult + "</span><br><span class='green'></span>";
+            document.getElementById("result").innerHTML = "<span class='black'><b>:نتیجه</b></span><br><span class='green'>" + formattedResult + "  تومان</span>";
             document.getElementById("order-btn").style.display = "inline-block";
         }
 
@@ -116,7 +118,7 @@
         </div>
         <button class="button" id="calculate-btn" onclick="calculate()">محاسبه</button>
         <p id="result"></p>
-        <button class="button" id="order-btn" onclick="goToOrderPage()">ثبت سفارش</button>
+        <button class="button" id="order-btn" onclick="goToOrderPage()">برگشت به پیج </button>
     </div>
 </body>
 </html>
