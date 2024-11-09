@@ -96,7 +96,7 @@
                 field1 += 23;
             }
 
-            var result = field1 * factor+300000;
+            var result = field1 * factor+200000;
             var formattedResult = formatNumber(result);
             document.getElementById("result").innerHTML = "<span class='black'><b>:نتیجه</b></span><br><span class='green'>" + formattedResult + "</span><br><span class='green'></span>";
             document.getElementById("order-btn").style.display = "inline-block";
@@ -109,8 +109,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>تبدیل دلار به تومان\n 
-             (هزینه تا درب منزل)</h2>
+        <h2>قیمت نهایی تا درب منزل</h2>
         <div class="input-container">
             <input type="number" id="price1" name="price1">
             <label for="price1"><b>:قیمت به دلار</b></label>
