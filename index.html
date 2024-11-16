@@ -65,6 +65,11 @@
         #order-btn {
             display: none;
         }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
     <script>
         function formatNumber(num) {
@@ -74,6 +79,12 @@
         function calculate() {
             var field1 = parseFloat(document.getElementById("price1").value);
             var factor = 68500;
+
+            if (field1 < 10) {
+                document.getElementById("result").innerHTML = "<span class='error'>حداقل سفارش ۱۰ دلار است. این مبلغ می‌تواند شامل یک محصول یا جمع قیمت چند محصول باشد.</span>";
+                document.getElementById("order-btn").style.display = "none";
+                return;
+            }
 
             if (field1 <= 10) {
                 field1 = field1 * 0.7 + field1;
